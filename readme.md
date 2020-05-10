@@ -84,6 +84,3 @@ Email    | email( ' Custom Message ' )    | validate a string by an email valid 
 Minmax   | minmax( minVal ,maxVal ,[ 'Min Custom Message', 'max Custom Message' ] ) | Validate a value by the min and the max value passed  
 Cpf      | cpf( 'Custom Message' )| Validate a document by a valid Regex
 Cnpj     | cnpj('Custom Message' )| Validate a document by a valid Regex
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
