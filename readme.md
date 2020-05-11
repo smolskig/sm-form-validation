@@ -31,7 +31,7 @@ validate( //Call validate function
 
 ## The Validation Function
 It receives an array of objects, that contains the value to validate and a validation array.<br/>
-Then return a Promise that return empty when success or and array when has an error
+Then return a Promise that return empty when success or a array when has an error
 ```javascript
 validate( [ { value : [ validation array ] } ] )
   .then(()=>{})
