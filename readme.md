@@ -89,7 +89,7 @@ validate(
 )
 ```
 In the code below we have two examples:<br/>
-***The email gonna validate and throw an error:***<br/>
+***The email gonna validate and throw an error:*** <br/>
 ***The name will not start validation:***
 ```javascript
 let usingEmail = true // this variable gonna be the trigger to validate or not the email field

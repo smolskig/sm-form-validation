@@ -2,30 +2,35 @@
 
 var CPF = require("cpf_cnpj").CPF;
 var CNPJ = require("cpf_cnpj").CNPJ;
+
 var formValid = [] // set validation variable
 
 function validate(data) {
-    return new Promise((resolve,reject) => { // return promise
-        formValid = [] // Reset validation variable
+    return new Promise((resolve,reject) => {
+        data.forEach((item,index) => {  // map on form array and catch the item and the index
+            let value = Object.keys(item)[0]  //save the form Value
+            let condition
+            let conditionValue
 
-        data.map((item,index) => { // map on form array and catch the item and the index
-            var value = Object.keys(item)[0]  //save the form Value
-            if(item.condition != undefined){
-                var condition = Object.keys(item.condition)[0]
-                var conditionValue = item.condition[condition]
+            if(item.condition != undefined){ // verify if condition exist
+                condition = Object.keys(item.condition)[0]
+                conditionValue = item.condition[condition]
             }
 
-            item[value].map(validation => { // map on validations inside the form values
+            item[value].forEach(validation => { // map on validations inside the form values
                 if (typeof validation === 'object') {
                     if(item.condition != undefined){  // enter on condition
                         if(compareCondition(conditionValue,condition)){ // pass the value and the condition
                             return validation.function(value,index,validation)
                         }
-                    }else{
+                    }
+                    else
+                    {
                         return validation.function(value,index,validation)
                     }
                 }
-                else {
+                else 
+                {
                     if(item.condition != undefined){
                         if(compareCondition(conditionValue,condition)){
                             return validation.function(value,index,validation)
@@ -38,10 +43,8 @@ function validate(data) {
         })
         if (formValid.length > 0) { // if formValid Array has a positive length
             reject(formValid) // return the array with the errors on promise
-            return false
         } else {
             resolve() // resolve
-            return true
         }
     })
 }
@@ -58,16 +61,18 @@ function compareCondition(value,condition){
 }
 
 function cpf(obs) {
-    var cpf = {function: validateCpf,obs}
+    let cpf = {function: validateCpf,obs}
     return cpf
 }
 function validateCpf(value,index,validation) {
     if (value) {
+
         let statusMsg = 'Invalid Document'
+        let validationType = validation.function
+
         if (validation.obs) {
             statusMsg = validation.obs
         }
-        let validationType = validation.function
 
         if (!CPF.isValid(value)) {
             formValid.push({
@@ -77,8 +82,6 @@ function validateCpf(value,index,validation) {
                 status: statusMsg
             })
         }
-    } else {
-        return true
     }
 }
 
@@ -108,7 +111,7 @@ function validateCnpj(value,index,validation) {
 
 
 function email(obs) {
-    var email = {function: validateEmail,obs}
+    let email = {function: validateEmail,obs}
     return email
 }
 function validateEmail(value,index,validation) {
@@ -132,7 +135,7 @@ function validateEmail(value,index,validation) {
 }
 
 function required(obs) {
-    var required = {function: validateRequired,obs}
+    let required = {function: validateRequired,obs}
     return required
 }
 function validateRequired(value,index,validation) {
@@ -152,7 +155,7 @@ function validateRequired(value,index,validation) {
 }
 
 function minmax(min,max,obs) { // function minmax return the values of min and max to an object with the name of the function called
-    var minmax = {function: range,min,max,obs}
+    let minmax = {function: range,min,max,obs}
     return minmax
 }
 function range(value,index,validation) {
