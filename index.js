@@ -8,12 +8,29 @@ function validate(data) {
 
         data.map((item,index) => { // map on form array and catch the item and the index
             var value = Object.keys(item)[0]  //save the form Value
+            if(item.condition != undefined){
+                var condition = Object.keys(item.condition)[0]
+                var conditionValue = item.condition[condition]
+            }
+
             item[value].map(validation => { // map on validations inside the form values
                 if (typeof validation === 'object') {
-                    return validation.function(value,index,validation)
+                    if(item.condition != undefined){  // enter on condition
+                        if(compareCondition(conditionValue,condition)){ // pass the value and the condition
+                            return validation.function(value,index,validation)
+                        }
+                    }else{
+                        return validation.function(value,index,validation)
+                    }
                 }
                 else {
-                    return validation(value,index,validation)
+                    if(item.condition != undefined){
+                        if(compareCondition(conditionValue,condition)){
+                            return validation.function(value,index,validation)
+                        }
+                    }else{
+                        return validation.function(value,index,validation)
+                    }
                 }
             })
         })
@@ -27,6 +44,16 @@ function validate(data) {
     })
 }
 
+function compareCondition(value,condition){
+    if(condition == 'false' && typeof value == 'boolean' || condition == 'true' && typeof value == 'boolean'){ // convert true and false string to bool if compares to bool
+        condition = JSON.parse(condition)
+    }
+    if(value == condition){ // if value is equal to condition it pass
+        return true
+    }else{
+        return false
+    }
+}
 
 function cpf(obs) {
     var cpf = {function: validateCpf,obs}
