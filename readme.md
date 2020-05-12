@@ -37,6 +37,7 @@ validate( [ { value : [ validation array ] } ] )
   .then(()=>{})
   .catch((err)=>{ console.log(err)})
 ```
+
 ## The Error Return
 When the validation gets error, it return an Array with all the occurrences.<br/>
 ***This code:***
@@ -77,17 +78,26 @@ validate(
 ```
 
 ## Condition
-For each validation, you can pass a condition to set if the validation gonna run or not.<br/>
-**In the code below we have two examples:**<br/>
-***The email gonna validate and throw an error***<br/>
-***The name will not start validation***
+For each object value, you can pass a condition to set if the validation gonna run or not as a second Key, called **condition**.<br/>
+As a value of condition you have to pass an object with the **values** that you want to compare on the respectively order.
+```javascript
+let usingEmail = true // this variable gonna be the trigger to validate or not the email field
+validate(
+    [
+        {'contatosmolski@gmail': [email('Wrong email')],condition: {[usingEmail]: true}}, // the sintax to condition is ' condition:{ firstValue : secondValue } '
+    ]
+)
+```
+In the code below we have two examples:<br/>
+***The email gonna validate and throw an error:***<br/>
+***The name will not start validation:***
 ```javascript
 let usingEmail = true // this variable gonna be the trigger to validate or not the email field
 let usingName = false // this variable gonna be the trigger to validate or not the name field
 validate(
     [
         {'contatosmolski@gmail': [email('Wrong email')],condition: {[usingEmail]: true}}, // passing a wrong email
-        {'': [required('The name field is required')], condition: {[usingName]: true}} // passing a wrong email
+        {'': [required('The name field is required')], condition: {[usingName]: true}} // passing a empty name (normaly it gonna return an error)
     ]
 )
     .then(() => {
@@ -108,6 +118,7 @@ validate(
     }
   ]
 ```
+
 ## Validations
 Name     |    Sintax  | Description
 -------- | -----------|----------------------------------------------------------
