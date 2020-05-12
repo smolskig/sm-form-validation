@@ -1,3 +1,5 @@
+/* SM-FORM-VALIDATION BY GABRIEL SMOLSKI DA ROSA  */
+
 var CPF = require("cpf_cnpj").CPF;
 var CNPJ = require("cpf_cnpj").CNPJ;
 var formValid = [] // set validation variable
