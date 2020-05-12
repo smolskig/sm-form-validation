@@ -11,7 +11,7 @@
     "url":"git+https://github.com/smolskig/sm-form-validation"
   },
   "homepage": "https://github.com/smolskig/sm-form-validation/blob/master/readme.md",
-  "keywords": ["brasil","form-validation","validation","value","validator","form","JS","node","js","validação","formulario"],
+  "keywords": ["front-end","javascript","form-validation","validation","value","validator","form","JS","node","js","validação","formulario"],
   "author": "smolskig",
   "license": "ISC",
   "dependencies": {

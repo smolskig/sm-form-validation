@@ -76,6 +76,38 @@ validate(
  )
 ```
 
+## Condition
+For each validation, you can pass a condition to set if the validation gonna run or not.</b>
+**In the code below we have two examples:</b>***
+***The email gonna validate and throw an error***
+***The name will not start validation***
+```javascript
+let usingEmail = true // this variable gonna be the trigger to validate or not the email field
+let usingName = false // this variable gonna be the trigger to validate or not the name field
+validate(
+    [
+        {'contatosmolski@gmail': [email('Wrong email')],condition: {[usingEmail]: true}}, // passing a wrong email
+        {'': [required('The name field is required')], condition: {[usingName]: true}} // passing a wrong email
+    ]
+)
+    .then(() => {
+        console.log('success')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+```
+**The Return**
+```javascript
+  [
+    {
+      value: 'contatosmolski@gmail', // it only validates the email
+      index: 0,
+      validation: [Function: validateEmail],
+      status: 'Wrong email'
+    }
+  ]
+```
 ## Validations
 Name     |    Sintax  | Description
 -------- | -----------|----------------------------------------------------------
