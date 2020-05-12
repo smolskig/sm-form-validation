@@ -1,21 +1,33 @@
 {
   "name": "sm-form-validation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simple form validation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type":"git",
-    "url":"git+https://github.com/smolskig/sm-form-validation"
+    "type": "git",
+    "url": "git+https://github.com/smolskig/sm-form-validation"
   },
   "homepage": "https://github.com/smolskig/sm-form-validation/blob/master/readme.md",
-  "keywords": ["front-end","javascript","form-validation","validation","value","validator","form","JS","node","js","validação","formulario"],
+  "keywords": [
+    "front-end",
+    "javascript",
+    "form-validation",
+    "validation",
+    "value",
+    "validator",
+    "form",
+    "JS",
+    "node",
+    "js",
+    "validação",
+    "formulario"
+  ],
   "author": "smolskig",
   "license": "ISC",
   "dependencies": {
     "cpf_cnpj": "^0.2.0"
   }
-
 }
