@@ -78,7 +78,7 @@ validate(
 
 ## Condition
 For each validation, you can pass a condition to set if the validation gonna run or not.</b>
-**In the code below we have two examples:</b>***
+**In the code below we have two examples:***</b>
 ***The email gonna validate and throw an error***
 ***The name will not start validation***
 ```javascript
