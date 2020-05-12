@@ -1,9 +1,9 @@
 /* SM-FORM-VALIDATION BY GABRIEL SMOLSKI DA ROSA  */
 
-var CPF = require("cpf_cnpj").CPF;
-var CNPJ = require("cpf_cnpj").CNPJ;
+const CPF = require("cpf_cnpj").CPF;
+const CNPJ = require("cpf_cnpj").CNPJ;
 
-var formValid = [] // set validation variable
+let formValid = [] // set validation variable
 
 function validate(data) {
     return new Promise((resolve,reject) => {
