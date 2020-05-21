@@ -146,7 +146,6 @@ function validateRequired(value,index,validation) {
     if (validation.obs) {
         statusMsg = validation.obs
     }
-    console.log('value',value)
     let validationType = validation.function
     if (value.length <= 0 || value == 'undefined' || value == 'null') {
         formValid.push({
