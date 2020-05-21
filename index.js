@@ -8,6 +8,7 @@ const CNPJ = require("cpf_cnpj").CNPJ;
 let formValid = [] // set validation variable
 
 function validate(data) {
+    formValid = []
     return new Promise((resolve,reject) => {
         data.forEach((item,index) => {  // map on form array and catch the item and the index
             let value = Object.keys(item)[0]  //save the form Value
