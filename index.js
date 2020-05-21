@@ -3,6 +3,8 @@
 const CPF = require("cpf_cnpj").CPF;
 const CNPJ = require("cpf_cnpj").CNPJ;
 
+//repsonsabilidades: Pegar os dados, mapear
+
 let formValid = [] // set validation variable
 
 function validate(data) {
@@ -143,8 +145,9 @@ function validateRequired(value,index,validation) {
     if (validation.obs) {
         statusMsg = validation.obs
     }
+    console.log('value',value)
     let validationType = validation.function
-    if (value.length <= 0) {
+    if (value.length <= 0 || value == 'undefined' || value == 'null') {
         formValid.push({
             value,
             index,
