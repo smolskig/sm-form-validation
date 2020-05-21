@@ -122,7 +122,8 @@ validate(
 ## Validations
 Name     |    Sintax  | Description
 -------- | -----------|----------------------------------------------------------
-Required | required( ' Custom Message ' ) | Validate the length of the value
+Required | required( ' Custom Message ' ) | Validate the length of the value or if value is undefined or null
+Custom   | custom( customValue, ' Custom Message ' ) | Validate a custom passed value
 Email    | email( ' Custom Message ' )    | validate a string by an email valid Regex
 Minmax   | minmax( minVal ,maxVal ,[ 'Min Custom Message', 'max Custom Message' ] ) | Validate a value by the min and the max value passed  
 Cpf      | cpf( 'Custom Message' )| Validate a document by a valid Regex

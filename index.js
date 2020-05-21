@@ -157,6 +157,33 @@ function validateRequired(value,index,validation) {
     }
 }
 
+function custom(customValue,obs) {
+    let validationCustom = {function: validateCustom,customValue,obs}
+    return validationCustom
+}
+function validateCustom(value,index,validation) {
+    let statusMsg = `The field must be ${validation.boolean}` 
+    if (validation.obs) {
+        statusMsg = validation.obs
+    }
+
+    let validationType = validation.function
+    if(value == 'true' || value == 'false'){
+        value = JSON.parse(value)   
+    }
+    if(validation.customValue == 'true' || validation.customValue == 'false'){
+        validation.customValue = JSON.parse(validation.customValue)
+    } 
+    if (value != validation.customValue) {
+        formValid.push({
+            value,
+            index,
+            validation: validationType,
+            status: statusMsg
+        })
+    }
+}
+
 function minmax(min,max,obs) { // function minmax return the values of min and max to an object with the name of the function called
     let minmax = {function: range,min,max,obs}
     return minmax
@@ -193,4 +220,4 @@ function range(value,index,validation) {
 
 
 
-module.exports = { validate, minmax, required, cpf, cnpj, email}
+module.exports = { validate, minmax, required, cpf, cnpj, email, custom}
